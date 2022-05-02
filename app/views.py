@@ -23,14 +23,19 @@ sports_sources = get_sources('sports')
 print(tech_sources)
 title = 'The Daily News'
 
-return render_template('index.html', title=title, business = business_sources,technology=tech_sources,sports=sports_sources)
+
 
 @app.route('/source/<id>')
 def articles(id):
 
   '''
-  
+  View  articles function that returns a list of articles on the article
+
   '''
+  articles = get_article(id)
+  title = f'Headline {id}'
+
+  return render_template('index.html', title=title, business = business_sources,technology=tech_sources,sports=sports_sources)
 
 
 
