@@ -2,6 +2,8 @@ import unittest
 from app.models import Articles
 
 
+
+
 class ArticlesTest(unittest.TestCase):
     '''
     Test Class to test the behaviour of the Movie class
@@ -29,4 +31,11 @@ class ArticlesTest(unittest.TestCase):
       self.assertEqual(self.new_article.image,'https://cdn.vox-cdn.com/thumbor/uBMIca3yNIX7iPk1VrGFQTL24o4=/0x17:1632x871/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/22963875/Screen_Shot_2021_10_28_at_2.03.39_PM.png')
       self.assertEqual(self.new_article.date,'2022-05-03T03:12:06Z')
 
-      
+
+
+
+
+    if __name__ == '__main__':
+      unittest.main() 
+
+
