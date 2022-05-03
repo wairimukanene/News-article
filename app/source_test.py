@@ -32,4 +32,10 @@ def test_to_check_instance_variables(self):
 
 
 
+        if __name__ == '__main__':
+          unittest.main() 
+
+
+
+
 
