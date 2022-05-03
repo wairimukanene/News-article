@@ -68,5 +68,28 @@ def process_sources(sources_list):
         return source_results
 
 
+def get_article(id):
+          '''
+          Function that processes the articles and returns a list of articles objects
+          '''
+          get_article_details_url = articles_url.format(id,api_key)
+
+          with urllib.request.urlopen(get_article_details_url) as url:
+            get_article_data = url.read()
+            get_articles_response = json.loads(get_article_data)
+
+            articles_results = None
+
+            if get_articles_response['articles']:
+              articles_results_list = get_articles_response['articles']
+              articles_results = process_articles(articles_results_list)
+
+              return articles_results
+
+def process_articles(articles_list):
+
+        
+
+
 
 
