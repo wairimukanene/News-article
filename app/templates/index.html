@@ -1,25 +1,30 @@
-<!DOCTYPE html>
+{% import 'macros.html' as macro%}
+  <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% block styles %}
+  {{ super() }}
+  {% endblock %}
   
   
   
   
 </head>
 <body>
+  {% block content %}
   <div class="container">
     <h2 class="text-center" style="font-family:'Times New Roman', Times, serif;">NEWS SOURCES AND ARTICLES FROM ALL OVER THE WORLD</h2>
     <hr>
     <h3 class="text-center" style="font-family:'Times New Roman', Times, serif;">Business News Sources</h3>
     <hr>
-    <ul></ul>
+    <ul>{{macro.displaySourcesList(business)}}</ul>
     <h3 class="text-center" style="font-family:'Times New Roman', Times, serif;">Technology News Sources</h3>
     <hr>
-    <ul></ul>
+    <ul>{{ macro.displaySourcesList(technology)}}</ul>
     <h3 class="text-center" style="font-family:'Times New Roman', Times, serif;">Sports News Sources</h3>
     <hr>
-    <ul></ul>
-
+    <ul>{{macro.displaySourcesList(sports)}}</ul>
   </div>
+  {% endblock %}
 </body>
 </html>
