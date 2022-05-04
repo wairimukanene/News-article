@@ -2,6 +2,7 @@ from flask import render_template
 from app import app
 from .request import get_sources,get_article
 
+
 # Views
 @app.route('/')
 def index():
@@ -10,17 +11,19 @@ def index():
   '''
 
   #Getting business related sources
-  business_sources = get_sources('business')
+  business_sources = get_sources()
 
-#Getting technology related sources
-  tech_sources = get_sources('technology')
+  print(business_sources)
 
-#Getting sports related sources
-  sports_sources = get_sources('sports')
+# #Getting technology related sources
+#   tech_sources = get_sources('technology')
 
-  print(tech_sources)
+# #Getting sports related sources
+#   sports_sources = get_sources('sports')
+
+  # print(tech_sources)
   title = 'The Daily News'
-  return render_template('index.html', title = title, technology = tech_sources, business = business_sources, sports = sports_sources)
+  return render_template('index.html', title = title, business_sources = business_sources)
 
 @app.route('/source/<id>')
 def articles(id):
@@ -31,6 +34,8 @@ def articles(id):
   '''
   articles = get_article(id)
   title = f'Headline {id}'
+
+  print(articles)
 
   return render_template('article.html',title = title, articles = articles)
 

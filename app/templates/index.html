@@ -14,7 +14,10 @@
 </head>
 <body>
   {% block content %}
-  <div class="container">
+  <div>
+    {{macro.displaySourcesList(business_sources)}}
+  </div>
+   <!-- <div class="container">
     <h2 class="text-center" style="font-family:'Times New Roman', Times, serif;">NEWS SOURCES AND ARTICLES FROM ALL OVER THE WORLD</h2>
     <hr>
     <h3 class="text-center" style="font-family:'Times New Roman', Times, serif;">Business News Sources</h3>
@@ -26,7 +29,7 @@
     <h3 class="text-center" style="font-family:'Times New Roman', Times, serif;">Sports News Sources</h3>
     <hr>
     <ul>{{macro.displaySourcesList(sports)}}</ul>
-  </div>
+  </div>  -->
   {% endblock %}
 </body>
 </html>

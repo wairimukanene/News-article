@@ -1,8 +1,10 @@
-from app import app
+# from app import app
 import urllib.request,json
-from .models import Source,Articles
+from .models import source
+from .models import articles
 
-
+Source = source.Source
+Articles = articles.Articles
 
 #Getting api key
 api_key = None
@@ -20,11 +22,11 @@ def configure_request(app):
     base_url = app.config['NEWS_SOURCES_BASE_URL']
     articles_url = app.config['ARTICLES_BASE_URL']
 
-def get_sources(category):
+def get_sources():
   '''
   Function that gets the json response to our url request
   '''
-  get_sources_url = base_url.format(category,api_key)
+  get_sources_url = 'https://newsapi.org/v2/top-headlines/sources?language=en&apiKey=4d91551cef8e4fbc92b1bced1fdb87d0'
 
 
   with urllib.request.urlopen(get_sources_url) as url:
@@ -34,10 +36,10 @@ def get_sources(category):
     source_results = None
 
     if get_sources_response['sources']:
-      sources_results_list = get_sources_response['sources']
-      sources_results = process_sources(sources_results_list)
-
-      return sources_results
+      source_results_list = get_sources_response['sources']
+      source_results = process_sources(source_results_list)
+      
+  return source_results
 
 def process_sources(sources_list):
   '''
@@ -65,14 +67,14 @@ def process_sources(sources_list):
 
         source_results.append(sources_object)
 
-        return source_results
+  return source_results
 
 
 def get_article(id):
           '''
           Function that processes the articles and returns a list of articles objects
           '''
-          get_article_details_url = articles_url.format(id,api_key)
+          get_article_details_url = 'https://newsapi.org/v2/everything?q=us&from=2022-04-04&sortBy=publishedAt&apiKey=4d91551cef8e4fbc92b1bced1fdb87d0'
 
           with urllib.request.urlopen(get_article_details_url) as url:
             get_article_data = url.read()
@@ -80,11 +82,17 @@ def get_article(id):
 
             articles_results = None
 
+            # if get_articles_response['articles']:
             if get_articles_response['articles']:
               articles_results_list = get_articles_response['articles']
-              articles_results = process_articles(articles_results_list)
+              # articles_results = process_articles.get('articles_results_list')
 
-              return articles_results
+
+              # articles_results_list = get_articles_response['articles']
+              articles_results = process_articles(articles_results_list)
+              # articles_results = Articles(articles_results, articles_results_list)
+              
+          return articles_results
 
 def process_articles(articles_list):
   articles_results = []
@@ -101,7 +109,7 @@ def process_articles(articles_list):
           articles_result = Articles(id,author,title,description,url,image,date)
           articles_results.append(articles_result)
 
-          return articles_results
+  return articles_results
 
 
         
