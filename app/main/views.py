@@ -15,7 +15,7 @@ def index():
   business_sources = get_sources()
 
 
-  title = 'The Daily News'
+  title = 'The Daily New'
   
   return render_template('index.html', title = title, business_sources = business_sources)
 
