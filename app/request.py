@@ -74,7 +74,7 @@ def get_article(id):
           '''
           Function that processes the articles and returns a list of articles objects
           '''
-          get_article_details_url = 'https://newsapi.org/v2/everything?q=us&from=2022-04-04&sortBy=publishedAt&apiKey=4d91551cef8e4fbc92b1bced1fdb87d0'
+          get_article_details_url = 'https://newsapi.org/v2/everything?q=us&from=2022-05-04&sortBy=publishedAt&apiKey=4d91551cef8e4fbc92b1bced1fdb87d0'
 
           with urllib.request.urlopen(get_article_details_url) as url:
             get_article_data = url.read()
